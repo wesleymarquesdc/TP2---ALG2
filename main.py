@@ -1,7 +1,9 @@
 import argparse
 import os
 import sys
-import bb
+import time
+
+import branch_and_bound
 
 def read_input(filename):
     with open(filename, 'r') as f:
@@ -46,13 +48,19 @@ def parse_args():
 
 def main():
     args = parse_args()
-    
-    knapsack_instance = read_input(args.filename)
+    instance = read_input(args.filename)
+
+    start = time.perf_counter()
+
     if args.alg == 'bb':
-        max_value = bb.knapsack(knapsack_instance)
-        print(max_value)
+        max_value = branch_and_bound.knapsack(instance)
     else:
-        print("Aproximativo")   
+        print("coloque aqui o algoritmo!")
+    print(max_value)
+
+    end = time.perf_counter() 
+    elapsed_ms = (end - start) * 1000  # time in milliseconds
+    print(elapsed_ms)
 
 if __name__ == '__main__':
     main()

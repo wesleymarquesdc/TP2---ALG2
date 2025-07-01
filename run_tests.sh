@@ -7,14 +7,16 @@ mkdir -p tests/logs
 exec > tests/logs/test_log_${ALG}.txt 2>&1
 
 for filename in tests/inputs/*; do
-    name=$(basename "$filename")   # extract filename without extension
+    name=$(basename "$filename")
     echo "Rodando teste: $name"
 
     # run program and capture its output
     output=$(python3 main.py "$filename" --alg "$ALG")
 
     # remove whitespace from output and expected value
-    output_value=$(echo "$output" | tr -d '[:space:]')
+    output_value=$(echo "$output" | head -n1 | tr -d '[:space:]')
+    output_time=$(echo "$output" | tail -n +2 | tr -d '[:space:]')
+
     expected_value=$(cat tests/outputs/"$name" | tr -d '[:space:]')
 
     # check if values were successfully extracted
@@ -25,6 +27,7 @@ for filename in tests/inputs/*; do
 
     echo "Valor obtido: $output_value"
     echo "Valor esperado: $expected_value"
+    echo "Tempo: ${output_time} ms"
 
     if [[ "$ALG" == "bb" ]]; then
         # exact comparison for branch-and-bound
@@ -36,9 +39,11 @@ for filename in tests/inputs/*; do
     else
         # approximate comparison: output_value must be at least (expected_value / TOL)
         limit=$(echo "$expected_value / $TOL" | bc -l)
-        comp=$(echo "$output_value >= $limit" | bc -l)
 
-        if [[ "$comp" -eq 1 ]]; then
+        comp_min=$(echo "$output_value >= $limit" | bc -l)
+        comp_max=$(echo "$output_value <= $expected_value" | bc -l)
+
+        if [[ "$comp_min" -eq 1 && "$comp_max" -eq 1 ]]; then
             echo "✅ Teste $name passou."
         else
             echo "❌ Teste $name falhou."
