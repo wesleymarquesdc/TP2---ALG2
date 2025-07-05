@@ -2,6 +2,7 @@ import argparse
 import os
 import sys
 import time
+import tracemalloc
 
 import branch_and_bound
 
@@ -50,17 +51,30 @@ def main():
     args = parse_args()
     instance = read_input(args.filename)
 
+    # Medir o tempo
     start = time.perf_counter()
+    
+    # Medir memoria
+    tracemalloc.start()
 
     if args.alg == 'bb':
         max_value = branch_and_bound.knapsack(instance)
     else:
         print("coloque aqui o algoritmo!")
+    
+    # Print do valor retornado pelo algoritmo
     print(max_value)
 
     end = time.perf_counter() 
     elapsed_ms = (end - start) * 1000  # time in milliseconds
+   
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+
+    # Print das medicoes de tempo, memoria gasta e pico de memoria 
     print(elapsed_ms)
+    print(f"{current / 1024}")
+    print(f"{peak / 1024}")
 
 if __name__ == '__main__':
     main()
