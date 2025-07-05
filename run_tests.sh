@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ALG=${1:-apx}
-TOL=1.5
+TOL_APX=1.5    # Tolerância mais rigorosa para FPTAS (1 + ε)
+TOL_2APX=2.0   # Tolerância para 2-aproximativo (50% do ótimo)
 
 mkdir -p tests/logs
 exec > tests/logs/test_log_${ALG}.txt 2>&1
@@ -40,10 +41,20 @@ for filename in tests/inputs/*; do
         else
             echo "❌ Teste $name falhou."
         fi
-    else
-        # approximate comparison: output_value must be at least (expected_value / TOL)
-        limit=$(echo "$expected_value / $TOL" | bc -l)
+    elif [[ "$ALG" == "apx" ]]; then
+        # FPTAS: (1-ε)-aproximação - tolerância mais rigorosa
+        limit=$(echo "$expected_value / $TOL_APX" | bc -l)
+        comp_min=$(echo "$output_value >= $limit" | bc -l)
+        comp_max=$(echo "$output_value <= $expected_value" | bc -l)
 
+        if [[ "$comp_min" -eq 1 && "$comp_max" -eq 1 ]]; then
+            echo "✅ Teste $name passou."
+        else
+            echo "❌ Teste $name falhou."
+        fi
+    elif [[ "$ALG" == "2apx" ]]; then
+        # 2-aproximativo: ≥ 50% do ótimo
+        limit=$(echo "$expected_value / $TOL_2APX" | bc -l)
         comp_min=$(echo "$output_value >= $limit" | bc -l)
         comp_max=$(echo "$output_value <= $expected_value" | bc -l)
 

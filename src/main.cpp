@@ -8,6 +8,7 @@
 
 #include "../include/branch_and_bound.h"
 #include "../include/approximative.h"
+#include "../include/two_approximative.h" 
 
 Instance read_input(const std::string& filename) {
     std::ifstream infile(filename);
@@ -39,9 +40,10 @@ double time_in_ms(const struct rusage& usage_before, const struct rusage& usage_
     return static_cast<double>(total_usec) / 1000.0;  // ms
 }
 
+
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cerr << "Uso: " << argv[0] << " <arquivo_entrada> [--alg bb|apx]" << std::endl;
+        std::cerr << "Uso: " << argv[0] << " <arquivo_entrada> [--alg bb|apx|2apx]" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -50,8 +52,8 @@ int main(int argc, char* argv[]) {
 
     if (argc == 4 && std::string(argv[2]) == "--alg") {
         alg = argv[3];
-        if (alg != "bb" && alg != "apx") {
-            std::cerr << "Algoritmo inválido. Use 'bb' ou 'apx'." << std::endl;
+        if (alg != "bb" && alg != "apx" && alg != "2apx") {
+            std::cerr << "Algoritmo inválido. Use 'bb', 'apx' ou '2apx'." << std::endl;
             return EXIT_FAILURE;
         }
     }
@@ -69,7 +71,11 @@ int main(int argc, char* argv[]) {
     int max_value;
     if (alg == "bb") {
         max_value = branch_and_bound::knapsack(instance);
-    } else {
+    } 
+    else if (alg == "2apx") {
+        max_value = two_approximative::knapsack(instance);
+    }
+    else {
         max_value = approximative::knapsack(instance, 0.5);
     }
 
@@ -80,7 +86,6 @@ int main(int argc, char* argv[]) {
 
     std::cout << max_value << std::endl;
     std::cout << elapsed_ms << std::endl;
-    std::cout << memory_kb << std::endl;
     std::cout << memory_kb << std::endl;
 
     return 0;

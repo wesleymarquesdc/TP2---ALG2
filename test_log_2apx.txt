@@ -1,0 +1,104 @@
+Rodando teste: f10_l-d_kp_20_879
+Valor obtido: 1019
+Valor esperado: 1025
+Tempo: 0.009 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f10_l-d_kp_20_879 passou.
+------------------------------
+Rodando teste: f1_l-d_kp_10_269
+Valor obtido: 294
+Valor esperado: 295
+Tempo: 0.007 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f1_l-d_kp_10_269 passou.
+------------------------------
+Rodando teste: f2_l-d_kp_20_878
+Valor obtido: 1018
+Valor esperado: 1024
+Tempo: 0.009 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f2_l-d_kp_20_878 passou.
+------------------------------
+Rodando teste: f3_l-d_kp_4_20
+Valor obtido: 35
+Valor esperado: 35
+Tempo: 0.005 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f3_l-d_kp_4_20 passou.
+------------------------------
+Rodando teste: f4_l-d_kp_4_11
+Valor obtido: 16
+Valor esperado: 23
+Tempo: 0.005 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f4_l-d_kp_4_11 passou.
+------------------------------
+Rodando teste: f6_l-d_kp_10_60
+Valor obtido: 52
+Valor esperado: 52
+Tempo: 0.008 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f6_l-d_kp_10_60 passou.
+------------------------------
+Rodando teste: f7_l-d_kp_7_50
+Valor obtido: 102
+Valor esperado: 107
+Tempo: 0.007 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f7_l-d_kp_7_50 passou.
+------------------------------
+Rodando teste: f8_l-d_kp_23_10000
+Valor obtido: 9751
+Valor esperado: 9767
+Tempo: 0.012 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f8_l-d_kp_23_10000 passou.
+------------------------------
+Rodando teste: f9_l-d_kp_5_80
+Valor obtido: 130
+Valor esperado: 130
+Tempo: 0.01 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste f9_l-d_kp_5_80 passou.
+------------------------------
+Rodando teste: knapPI_14_200_1000_1
+Valor obtido: 5397
+Valor esperado: 5397
+Tempo: 0.135 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste knapPI_14_200_1000_1 passou.
+------------------------------
+Rodando teste: knapPI_1_500_1000_1
+Valor obtido: 28834
+Valor esperado: 28857
+Tempo: 0.23 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste knapPI_1_500_1000_1 passou.
+------------------------------
+Rodando teste: knapPI_2_500_1000_1
+Valor obtido: 4552
+Valor esperado: 4566
+Tempo: 0.319 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste knapPI_2_500_1000_1 passou.
+------------------------------
+Rodando teste: knapPI_3_500_1000_1
+Valor obtido: 7098
+Valor esperado: 7117
+Tempo: 0.329 ms
+Memoria atual: 3456 KB
+Pico de memoria:  KB
+✅ Teste knapPI_3_500_1000_1 passou.
+------------------------------
