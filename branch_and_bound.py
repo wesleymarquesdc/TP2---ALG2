@@ -1,23 +1,25 @@
 import heapq
 
 class Item:
+    __slots__ = ('value', 'weight', 'ratio')
     def __init__(self, value, weight):
         self.value = value
         self.weight = weight
         self.ratio = value / weight
 
-def bound(node, capacity, items, n):
-    if node.weight >= capacity:
+def bound(level, value, weight, capacity, items, n):
+    if weight >= capacity:
         return 0
 
-    i = node.level + 1
+    i = level + 1
     if i >= n:
-        return node.value
+        return value
 
     # bound = v + (W - w) * (v_{i+1} / w_{i+1})
-    return node.value + (capacity - node.weight) * items[i].ratio
+    return value + (capacity - weight) * items[i].ratio
 
 class Node:
+    __slots__ = ('level', 'value', 'weight', 'bound')
     def __init__(self, level, value, weight):
         self.level = level      # current index in items
         self.value = value      # current total value
@@ -33,7 +35,7 @@ def knapsack(instance):
 
     queue = []
     root = Node(-1, 0, 0)
-    root.bound = bound(root, capacity, items, n)
+    root.bound = bound(root.level, root.value, root.weight, capacity, items, n)
     max_value = 0
 
     heapq.heappush(queue, root)
@@ -46,21 +48,25 @@ def knapsack(instance):
 
         # Branch: include next item
         next_level = node.level + 1
-        include = Node(next_level,
-                       node.value + items[next_level].value,
-                       node.weight + items[next_level].weight)
+        new_value = node.value + items[next_level].value
+        new_weight = node.weight + items[next_level].weight
 
-        if include.weight <= capacity:
-            if include.value > max_value:
-                max_value = include.value
-            include.bound = bound(include, capacity, items, n)
-            if include.bound > max_value:
+        if new_weight <= capacity:
+            if new_value > max_value:
+                max_value = new_value
+
+            temp_bound = bound(next_level, new_value, new_weight, capacity, items, n)
+
+            if temp_bound > max_value:
+                include = Node(next_level, new_value, new_weight)
+                include.bound = temp_bound
                 heapq.heappush(queue, include)
 
         # Branch: exclude next item
-        exclude = Node(next_level, node.value, node.weight)
-        exclude.bound = bound(exclude, capacity, items, n)
-        if exclude.bound > max_value:
+        temp_bound = bound(next_level, node.value, node.weight, capacity, items, n)
+        if temp_bound > max_value:
+            exclude = Node(next_level, node.value, node.weight)
+            exclude.bound = temp_bound
             heapq.heappush(queue, exclude)
 
     return max_value
