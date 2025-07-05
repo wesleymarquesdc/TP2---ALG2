@@ -46,7 +46,7 @@ def knapsack(instance):
         if node.bound <= max_value or node.level == n - 1:
             continue
 
-        # Branch: include next item
+        # branch: include next item
         next_level = node.level + 1
         new_value = node.value + items[next_level].value
         new_weight = node.weight + items[next_level].weight
@@ -62,7 +62,7 @@ def knapsack(instance):
                 include.bound = temp_bound
                 heapq.heappush(queue, include)
 
-        # Branch: exclude next item
+        # branch: exclude next item
         temp_bound = bound(next_level, node.value, node.weight, capacity, items, n)
         if temp_bound > max_value:
             exclude = Node(next_level, node.value, node.weight)

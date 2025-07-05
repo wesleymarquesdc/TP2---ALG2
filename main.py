@@ -5,6 +5,7 @@ import time
 import tracemalloc
 
 import branch_and_bound
+import approximative
 
 def read_input(filename):
     with open(filename, 'r') as f:
@@ -51,27 +52,22 @@ def main():
     args = parse_args()
     instance = read_input(args.filename)
 
-    # Medir o tempo
+    # time measurement (ms)
     start = time.perf_counter()
-    
-    # Medir memoria
+    # space measurement (kB)
     tracemalloc.start()
 
     if args.alg == 'bb':
         max_value = branch_and_bound.knapsack(instance)
     else:
-        print("coloque aqui o algoritmo!")
-    
-    # Print do valor retornado pelo algoritmo
-    print(max_value)
+        max_value = approximative.knapsack(instance, 0.5)
 
     end = time.perf_counter() 
-    elapsed_ms = (end - start) * 1000  # time in milliseconds
-   
+    elapsed_ms = (end - start) * 1000
     current, peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    # Print das medicoes de tempo, memoria gasta e pico de memoria 
+    print(max_value)
     print(elapsed_ms)
     print(f"{current / 1024}")
     print(f"{peak / 1024}")
