@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
     std::cout << max_value << std::endl;
     std::cout << elapsed_ms << std::endl;
     std::cout << memory_kb << std::endl;
-    std::cout << memory_kb << std::endl; // ru_maxrss já é o pico
+    std::cout << memory_kb << std::endl;
 
     return 0;
 }

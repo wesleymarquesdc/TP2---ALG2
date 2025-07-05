@@ -1,6 +1,6 @@
 # TP2 — ALG2
 
-Este projeto implementa duas abordagens para resolução de problemas: **Branch and Bound (bb)** e **Aproximativo (apx)**.
+Este projeto implementa duas abordagens para resolução do problema da mochila binária: **Branch and Bound (bb)** e **Aproximativo (apx)**.
 
 ---
 
@@ -24,8 +24,8 @@ Os resultados serão salvos na pasta: `tests/logs/`
 Você pode executar um teste específico com o comando `make run`, passando os argumentos desejados:
 
 ```bash
-make run ARGS="tests/input/test-name --alg bb"   # Branch and bound
-make run ARGS="tests/input/test-name --alg apx"  # Aproximativo
+make run ARGS="tests/inputs/test-name --alg bb"   # Branch and Bound
+make run ARGS="tests/inputs/test-name --alg apx"  # Aproximativo
 ```
 
 O terminal exibirá:
