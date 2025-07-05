@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ALG=${1:-apx}
-TOL=2
+TOL=1.5
 
 mkdir -p tests/logs
 exec > tests/logs/test_log_${ALG}.txt 2>&1
@@ -10,14 +10,14 @@ for filename in tests/inputs/*; do
     name=$(basename "$filename")
     echo "Rodando teste: $name"
 
-    # run program and capture its output
-    output=$(python3 main.py "$filename" --alg "$ALG")
+    # run compiled C++ program from bin/ folder with args
+    output=$(make run ARGS="$filename --alg $ALG")
 
-    # remove whitespace from output and expected value
+    # remove whitespace from output lines
     output_value=$(echo "$output" | sed -n '1p' | tr -d '[:space:]')
     output_time=$(echo "$output" | sed -n '2p' | tr -d '[:space:]')
     output_current_mem=$(echo "$output" | sed -n '3p' | tr -d '[:space:]')
-    output_peak_mem=$(echo "$output" | sed -n '4p' | tr -d '[:space]')
+    output_peak_mem=$(echo "$output" | sed -n '4p' | tr -d '[:space:]')
 
     expected_value=$(cat tests/outputs/"$name" | tr -d '[:space:]')
 
@@ -30,8 +30,8 @@ for filename in tests/inputs/*; do
     echo "Valor obtido: $output_value"
     echo "Valor esperado: $expected_value"
     echo "Tempo: ${output_time} ms"
-    echo "Memória atual: ${output_current_mem} KB"
-    echo "Pico de memória: ${output_peak_mem} KB"
+    echo "Memoria atual: ${output_current_mem} KB"
+    echo "Pico de memoria: ${output_peak_mem} KB"
 
     if [[ "$ALG" == "bb" ]]; then
         # exact comparison for branch-and-bound
