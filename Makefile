@@ -62,3 +62,4 @@ valgrind: $(EXE)
 # remove object files and executable
 clean:
 	@rm -rf $(OBJ)/*.o $(EXE) gmon.out
+	@rm -rf $(OBJ)/ $(BIN)/
