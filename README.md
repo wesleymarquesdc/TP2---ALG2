@@ -13,10 +13,11 @@ Este projeto implementa três abordagens para resolução do problema da mochila
 
 Para rodar todos os testes e salvar os resultados em arquivo:
 
-bash
+```bash
 bash run_tests.sh bb         # Executa todos os testes com Branch and Bound
 bash run_tests.sh apx 0.5    # Executa todos os testes com Aproximativo (epsilon obrigatório)
 bash run_tests.sh apx2       # Executa todos os testes com 2-aproximativo
+```
 
 Os resultados serão salvos na pasta: `tests/logs/`
 
@@ -26,10 +27,11 @@ Os resultados serão salvos na pasta: `tests/logs/`
 
 Você pode executar um teste específico com o comando `make run`, passando os argumentos:
 
-bash
+```bash
 make run ARGS="tests/inputs/test-name bb"            # Branch and Bound
 make run ARGS="tests/inputs/test-name apx 0.5"       # Aproximativo (epsilon obrigatório)
 make run ARGS="tests/inputs/test-name apx2"          # 2-aproximativo
+```
 
 O terminal exibirá, nesta ordem:  
 - Valor da solução  
