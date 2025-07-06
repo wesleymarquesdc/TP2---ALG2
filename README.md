@@ -1,9 +1,9 @@
 # TP2 — ALG2
 
 Este projeto implementa três abordagens para resolução do problema da mochila binária:  
-- **Branch and Bound (bb)** (algoritmo exato)  
-- **Aproximativo (apx)** (FPTAS com parâmetro epsilon)  
-- **2-aproximativo (apx2)** (algoritmo 2-aproximativo)
+- **Branch and Bound (bb)** - algoritmo exato  
+- **Aproximativo (apx)** - FPTAS com parâmetro epsilon  
+- **2-aproximativo (apx2)** - algoritmo com fator de aproximação 2 
 
 ---
 
