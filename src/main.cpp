@@ -8,7 +8,7 @@
 
 #include "../include/branch_and_bound.h"
 #include "../include/approximative.h"
-#include "../include/two_approximative.h" 
+#include "../include/two_approximative.h"
 
 Instance read_input(const std::string& filename) {
     std::ifstream infile(filename);
@@ -40,27 +40,51 @@ double time_in_ms(const struct rusage& usage_before, const struct rusage& usage_
     return static_cast<double>(total_usec) / 1000.0;  // ms
 }
 
-
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cerr << "Uso: " << argv[0] << " <arquivo_entrada> [--alg bb|apx|2apx]" << std::endl;
+    if (argc < 3) {
+        std::cerr << "Uso: " << argv[0] << " <arquivo_entrada> <algoritmo> [epsilon]\n";
+        std::cerr << "Algoritmos disponíveis:\n";
+        std::cerr << "  bb         (exato)\n";
+        std::cerr << "  apx <eps>  (aproximado, epsilon ∈ (0,1))\n";
+        std::cerr << "  apx2       (2-aproximativo)\n";
         return EXIT_FAILURE;
     }
 
     std::string filename = argv[1];
-    std::string alg = "apx";
-
-    if (argc == 4 && std::string(argv[2]) == "--alg") {
-        alg = argv[3];
-        if (alg != "bb" && alg != "apx" && alg != "2apx") {
-            std::cerr << "Algoritmo inválido. Use 'bb', 'apx' ou '2apx'." << std::endl;
-            return EXIT_FAILURE;
-        }
-    }
+    std::string alg = argv[2];
 
     if (!std::filesystem::exists(filename)) {
-        std::cerr << "Erro: Arquivo '" << filename << "' não encontrado." << std::endl;
+        std::cerr << "Erro: Arquivo '" << filename << "' não encontrado.\n";
         return EXIT_FAILURE;
+    }
+
+    if (alg == "bb" || alg == "apx2") {
+        if (argc != 3) {
+            std::cerr << "Erro: Algoritmo '" << alg << "' não requer valor de epsilon.\n";
+            return EXIT_FAILURE;
+        }
+    } else if (alg == "apx") {
+        if (argc != 4) {
+            std::cerr << "Erro: Algoritmo 'apx' requer um valor de epsilon como terceiro argumento.\n";
+            return EXIT_FAILURE;
+        }
+    } else {
+        std::cerr << "Erro: Algoritmo inválido. Use 'bb', 'apx' ou 'apx2'.\n";
+        return EXIT_FAILURE;
+    }
+
+    double epsilon = 0.0;
+    if (alg == "apx") {
+        try {
+            epsilon = std::stod(argv[3]);
+            if (epsilon <= 0.0 || epsilon >= 1.0) {
+                std::cerr << "Erro: epsilon deve estar entre 0 e 1 (ex: 0.1, 0.5).\n";
+                return EXIT_FAILURE;
+            }
+        } catch (...) {
+            std::cerr << "Erro: epsilon inválido. Deve ser um número no intervalo (0, 1).\n";
+            return EXIT_FAILURE;
+        }
     }
 
     Instance instance = read_input(filename);
@@ -68,15 +92,13 @@ int main(int argc, char* argv[]) {
     struct rusage usage_before, usage_after;
     getrusage(RUSAGE_SELF, &usage_before);
 
-    int max_value;
+    int max_value = 0;
     if (alg == "bb") {
         max_value = branch_and_bound::knapsack(instance);
-    } 
-    else if (alg == "2apx") {
+    } else if (alg == "apx") {
+        max_value = approximative::knapsack(instance, epsilon);
+    } else if (alg == "apx2") {
         max_value = two_approximative::knapsack(instance);
-    }
-    else {
-        max_value = approximative::knapsack(instance, 0.5);
     }
 
     getrusage(RUSAGE_SELF, &usage_after);
