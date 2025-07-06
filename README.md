@@ -44,7 +44,7 @@ O terminal exibirá, nesta ordem:
 Caso você queira testar a versão dos algoritmos em Python. Você pode seguir os passos:
 1. Ir para a pasta `python`
 2. Rodar algum/todos o(s) seguintes comandos:
-- ```bash
+```bash
 bash run_tests.sh bb         # Executa todos os testes com Branch and Bound
 bash run_tests.sh apx 0.5    # Executa todos os testes com Aproximativo (epsilon obrigatório)
 bash run_tests.sh apx2       # Executa todos os testes com 2-aproximativo
