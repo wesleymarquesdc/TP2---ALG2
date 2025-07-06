@@ -44,17 +44,11 @@ for filename in tests/inputs/*; do
         else
             echo "❌ Teste $name falhou."
         fi
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> b68c8f34adb9823de218f9436c034f44d0b10545
     elif [[ "$alg" == "apx" ]]; then
         # (1 - epsilon)-approximation for approximate algorithm
         limit_min=$(echo "$expected_value * (1 - $epsilon)" | bc -l)
         comp_min=$(echo "$output_value >= $limit_min" | bc -l)
         comp_max=$(echo "$output_value <= $expected_value" | bc -l)
-<<<<<<< HEAD
         
         ratio=$(echo "scale=4; $output_value / $expected_value * 100" | bc -l)
         dist=$(echo "scale=4; (1 - $output_value / $expected_value) * 100" | bc -l)
@@ -66,19 +60,6 @@ for filename in tests/inputs/*; do
         else
             echo "Aproximação do ótimo: $ratio %"
             echo "Erro percentual: $dist %"
-            echo "❌ Teste $name falhou."
-        fi
-
->>>>>>> Stashed changes
-    else
-        # approximate comparison: output_value must be at least (expected_value / TOL)
-        limit=$(echo "$expected_value / $TOL" | bc -l)
-=======
->>>>>>> b68c8f34adb9823de218f9436c034f44d0b10545
-
-        if [[ "$comp_min" -eq 1 && "$comp_max" -eq 1 ]]; then
-            echo "✅ Teste $name passou."
-        else
             echo "❌ Teste $name falhou."
         fi
     else
