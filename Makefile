@@ -55,7 +55,7 @@ $(BIN):
 run: $(EXE)
 	@$(EXE) $(ARGS)
 
-# run valgrind to detect leaks
+# run valgrind to detect leaks (accepts command line args)
 valgrind: $(EXE)
 	@valgrind --leak-check=full --show-leak-kinds=all $(EXE) $(ARGS)
 
