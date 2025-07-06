@@ -1,0 +1,117 @@
+Rodando teste: f10_l-d_kp_20_879
+Valor obtido: 1003
+Valor esperado: 1025
+Tempo: 0.444 ms
+Pico de memoria: 3556 kb
+Aproximação do ótimo: 97.8500 %
+Erro percentual: 2.1500 %
+✅ Teste f10_l-d_kp_20_879 passou.
+------------------------------
+Rodando teste: f1_l-d_kp_10_269
+Valor obtido: 287
+Valor esperado: 295
+Tempo: 0.05 ms
+Pico de memoria: 3556 kb
+Aproximação do ótimo: 97.2800 %
+Erro percentual: 2.7200 %
+✅ Teste f1_l-d_kp_10_269 passou.
+------------------------------
+Rodando teste: f2_l-d_kp_20_878
+Valor obtido: 1001
+Valor esperado: 1024
+Tempo: 0.419 ms
+Pico de memoria: 3520 kb
+Aproximação do ótimo: 97.7500 %
+Erro percentual: 2.2500 %
+✅ Teste f2_l-d_kp_20_878 passou.
+------------------------------
+Rodando teste: f3_l-d_kp_4_20
+Valor obtido: 31
+Valor esperado: 35
+Tempo: 0.018 ms
+Pico de memoria: 3556 kb
+Aproximação do ótimo: 88.5700 %
+Erro percentual: 11.4300 %
+✅ Teste f3_l-d_kp_4_20 passou.
+------------------------------
+Rodando teste: f4_l-d_kp_4_11
+Valor obtido: 22
+Valor esperado: 23
+Tempo: 0.016 ms
+Pico de memoria: 3520 kb
+Aproximação do ótimo: 95.6500 %
+Erro percentual: 4.3500 %
+✅ Teste f4_l-d_kp_4_11 passou.
+------------------------------
+Rodando teste: f6_l-d_kp_10_60
+Valor obtido: 52
+Valor esperado: 52
+Tempo: 0.05 ms
+Pico de memoria: 3556 kb
+Aproximação do ótimo: 100.0000 %
+Erro percentual: 0 %
+✅ Teste f6_l-d_kp_10_60 passou.
+------------------------------
+Rodando teste: f7_l-d_kp_7_50
+Valor obtido: 105
+Valor esperado: 107
+Tempo: 0.024 ms
+Pico de memoria: 3556 kb
+Aproximação do ótimo: 98.1300 %
+Erro percentual: 1.8700 %
+✅ Teste f7_l-d_kp_7_50 passou.
+------------------------------
+Rodando teste: f8_l-d_kp_23_10000
+Valor obtido: 9618
+Valor esperado: 9767
+Tempo: 0.551 ms
+Pico de memoria: 3684 kb
+Aproximação do ótimo: 98.4700 %
+Erro percentual: 1.5300 %
+✅ Teste f8_l-d_kp_23_10000 passou.
+------------------------------
+Rodando teste: f9_l-d_kp_5_80
+Valor obtido: 122
+Valor esperado: 130
+Tempo: 0.02 ms
+Pico de memoria: 3556 kb
+Aproximação do ótimo: 93.8400 %
+Erro percentual: 6.1600 %
+✅ Teste f9_l-d_kp_5_80 passou.
+------------------------------
+Rodando teste: knapPI_14_200_1000_1
+Valor obtido: 5372
+Valor esperado: 5397
+Tempo: 139.108 ms
+Pico de memoria: 40804 kb
+Aproximação do ótimo: 99.5300 %
+Erro percentual: .4700 %
+✅ Teste knapPI_14_200_1000_1 passou.
+------------------------------
+Rodando teste: knapPI_1_500_1000_1
+Valor obtido: 28832
+Valor esperado: 28857
+Tempo: 1593.01 ms
+Pico de memoria: 489564 kb
+Aproximação do ótimo: 99.9100 %
+Erro percentual: .0900 %
+✅ Teste knapPI_1_500_1000_1 passou.
+------------------------------
+Rodando teste: knapPI_2_500_1000_1
+Valor obtido: 4551
+Valor esperado: 4566
+Tempo: 1493.74 ms
+Pico de memoria: 475492 kb
+Aproximação do ótimo: 99.6700 %
+Erro percentual: .3300 %
+✅ Teste knapPI_2_500_1000_1 passou.
+------------------------------
+Rodando teste: knapPI_3_500_1000_1
+Valor obtido: 7091
+Valor esperado: 7117
+Tempo: 1759.06 ms
+Pico de memoria: 547776 kb
+Aproximação do ótimo: 99.6300 %
+Erro percentual: .3700 %
+✅ Teste knapPI_3_500_1000_1 passou.
+------------------------------
