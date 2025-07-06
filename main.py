@@ -2,8 +2,11 @@ import argparse
 import os
 import sys
 import time
+import tracemalloc
 
+import approximative
 import branch_and_bound
+import two_approximative
 
 def read_input(filename):
     with open(filename, 'r') as f:
@@ -32,9 +35,9 @@ def parse_args():
 
     parser.add_argument(
         '--alg',
-        choices=['bb', 'apx'],
+        choices=['bb', 'apx', '2apx'],
         default='apx',
-        help='Algoritmo a ser usado: bb (branch-and-bound) ou apx (aproximativo). Padrão: apx'
+        help='Algoritmo a ser usado: bb (branch-and-bound) ou apx (aproximativo) ou 2apx (2-aproximativo). Padrão: apx'
     )
 
     args = parser.parse_args()
@@ -50,17 +53,31 @@ def main():
     args = parse_args()
     instance = read_input(args.filename)
 
+    # time measurement (ms)
     start = time.perf_counter()
+    
+    # space measurement (kB)
+    tracemalloc.start()
+
 
     if args.alg == 'bb':
         max_value = branch_and_bound.knapsack(instance)
+    elif args.alg == '2apx':
+        max_value = two_approximative.knapsack_2approx(instance)
     else:
-        print("coloque aqui o algoritmo!")
+        max_value = approximative.knapsack(instance, 0.5)
+    
     print(max_value)
 
     end = time.perf_counter() 
     elapsed_ms = (end - start) * 1000  # time in milliseconds
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+
     print(elapsed_ms)
+    print(f"{current / 1024}")
+    print(f"{peak / 1024}")
+
 
 if __name__ == '__main__':
     main()

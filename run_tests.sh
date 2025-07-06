@@ -14,8 +14,10 @@ for filename in tests/inputs/*; do
     output=$(python3 main.py "$filename" --alg "$ALG")
 
     # remove whitespace from output and expected value
-    output_value=$(echo "$output" | head -n1 | tr -d '[:space:]')
-    output_time=$(echo "$output" | tail -n +2 | tr -d '[:space:]')
+    output_value=$(echo "$output" | sed -n '1p' | tr -d '[:space:]')
+    output_time=$(echo "$output" | sed -n '2p' | tr -d '[:space:]')
+    output_current_mem=$(echo "$output" | sed -n '3p' | tr -d '[:space:]')
+    output_peak_mem=$(echo "$output" | sed -n '4p' | tr -d '[:space]')
 
     expected_value=$(cat tests/outputs/"$name" | tr -d '[:space:]')
 
@@ -28,6 +30,8 @@ for filename in tests/inputs/*; do
     echo "Valor obtido: $output_value"
     echo "Valor esperado: $expected_value"
     echo "Tempo: ${output_time} ms"
+    echo "Memória atual: ${output_current_mem} KB"
+    echo "Pico de memória: ${output_peak_mem} KB"
 
     if [[ "$ALG" == "bb" ]]; then
         # exact comparison for branch-and-bound
