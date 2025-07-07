@@ -23,6 +23,7 @@ make all
 ```
 
 ## Como Executar os Testes
+Você deve estar na raiz do projeto.
 
 ### Executar Todos os Testes
 
@@ -40,7 +41,7 @@ Os resultados serão salvos na pasta: `tests/logs/`
 
 ### Executar um Único Teste
 
-Você pode executar um teste específico com o comando `make run`, passando os argumentos:
+Você pode executar um teste específico com o comando `make run`, passando os argumentos (substitua `test-name` pela instância que você quer executar):
 
 ```bash
 make run ARGS="tests/inputs/test-name bb"            # Branch and Bound
