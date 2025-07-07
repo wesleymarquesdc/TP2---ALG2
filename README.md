@@ -46,7 +46,7 @@ Caso você queira testar a versão dos algoritmos em Python. Você pode seguir o
 2. Rodar algum/todos o(s) seguintes comandos:
 ```bash
 bash run_tests.sh bb         # Executa todos os testes com Branch and Bound
-bash run_tests.sh apx 0.5    # Executa todos os testes com Aproximativo (epsilon obrigatório)
+bash run_tests.sh apx     # Executa todos os testes com Aproximativo 
 bash run_tests.sh apx2       # Executa todos os testes com 2-aproximativo
 ```
 
