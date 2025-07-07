@@ -10,6 +10,10 @@ Este projeto implementa três abordagens para resolução do problema da mochila
 - **2-aproximativo (apx2)** - algoritmo com fator de aproximação 2 
 
 ---
+## Relatório e planilhas
+- As planilhas `resultados_apx.csv`, `resultados_apx2.csv` e `resultados_bb.csv` representam os resultados da execução dos algoritmos aproximativo (versão vista em sala de aula), 2-aproximativo (proposto aqui neste projeto) e branch-and-bound, respectivamente.
+- O relatório do projeto é o arquivo `Relatorio.pdf`
+
 ## Como Compilar
 
 Para compilar todos os executáveis, rode:
