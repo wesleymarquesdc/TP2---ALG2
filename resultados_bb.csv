@@ -1,0 +1,14 @@
+Teste,Valor obtido,Valor esperado,Tempo (ms),Pico de memória (kb),Status
+f10_l-d_kp_20_879,1025,1025,13.141,3500,passou
+f1_l-d_kp_10_269,295,295,0.065,3424,passou
+f2_l-d_kp_20_878,1024,1024,8.833,3640,passou
+f3_l-d_kp_4_20,35,35,0.019,3428,passou
+f4_l-d_kp_4_11,23,23,0.018,3392,passou
+f6_l-d_kp_10_60,52,52,0.207,3428,passou
+f7_l-d_kp_7_50,107,107,0.018,3428,passou
+f8_l-d_kp_23_10000,9767,9767,4310.56,52640,passou
+f9_l-d_kp_5_80,130,130,0.013,3424,passou
+knapPI_14_200_1000_1,5397,5397,3.489,3640,passou
+knapPI_1_500_1000_1,28857,28857,195334,1.57638e+06,passou
+knapPI_2_500_1000_1,4566,4566,154.618,6732,passou
+knapPI_3_500_1000_1,7117,7117,262137,3.14917e+06,passou
