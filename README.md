@@ -1,11 +1,22 @@
 # TP2 — ALG2
 
+## Integrantes
+- Lucas Paulo de Oliveira Silva - 2022043469
+- Wesley Marques Daniel Chaves - 2020053246
+
 Este projeto implementa três abordagens para resolução do problema da mochila binária:  
 - **Branch and Bound (bb)** - algoritmo exato  
 - **Aproximativo (apx)** - FPTAS com parâmetro epsilon  
 - **2-aproximativo (apx2)** - algoritmo com fator de aproximação 2 
 
 ---
+## Como Compilar
+
+Para compilar todos os executáveis, rode:
+
+```bash
+make all
+```
 
 ## Como Executar os Testes
 
@@ -39,6 +50,16 @@ O terminal exibirá, nesta ordem:
 - Memória máxima utilizada (KB)  
 
 ---
+
+## Implementação em Python
+Caso você queira testar a versão dos algoritmos em Python. Você pode seguir os passos:
+1. Ir para a pasta `python`
+2. Rodar algum/todos o(s) seguintes comandos:
+```bash
+bash run_tests.sh bb         # Executa todos os testes com Branch and Bound
+bash run_tests.sh apx 0.5    # Executa todos os testes com Aproximativo (epsilon obrigatório)
+bash run_tests.sh apx2       # Executa todos os testes com 2-aproximativo
+```
 
 ## Requisitos
 
